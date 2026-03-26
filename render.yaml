@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: brainmode
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_SUPABASE_URL
+        value: https://ezolfproqqltgzarbwlx.supabase.co
+      - key: VITE_SUPABASE_PUBLISHABLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6b2xmcHJvcXFsdGd6YXJid2x4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MzM0NzksImV4cCI6MjA5MDEwOTQ3OX0.uEQWtLI86vUUirBApGjusqL3PA5i8Aje974eSlWeIWs
+      - key: VITE_SUPABASE_PROJECT_ID
+        value: ezolfproqqltgzarbwlx
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

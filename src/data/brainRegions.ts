@@ -1,0 +1,167 @@
+export interface BrainRegion {
+  id: string;
+  name: string;
+  description: string;
+  functions: string[];
+  position: { x: number; y: number; z: number };
+  color: string;
+  category: string;
+  imagePath: string;
+}
+
+export const brainRegions: BrainRegion[] = [
+  {
+    id: "prefrontal",
+    name: "Prefrontal Cortex",
+    description: "The command center of the brain, responsible for executive functions including planning, decision-making, problem-solving, and personality expression. It plays a crucial role in moderating social behavior and complex cognitive processes.",
+    functions: ["Planning", "Decision-making", "Problem-solving", "Personality", "Working memory"],
+    position: { x: 0, y: 0.8, z: 1.2 },
+    color: "hsl(180, 80%, 50%)",
+    category: "Frontal Lobe",
+    imagePath: "/brain-regions/brain-prefrontal.png",
+  },
+  {
+    id: "motor",
+    name: "Motor Cortex",
+    description: "Located in the posterior portion of the frontal lobe, the motor cortex is the primary region responsible for planning, controlling, and executing voluntary movements throughout the body.",
+    functions: ["Voluntary movement", "Motor planning", "Movement execution", "Fine motor control"],
+    position: { x: 0, y: 1.2, z: 0.5 },
+    color: "hsl(200, 70%, 55%)",
+    category: "Frontal Lobe",
+    imagePath: "/brain-regions/brain-motor.png",
+  },
+  {
+    id: "sensory",
+    name: "Somatosensory Cortex",
+    description: "Processes tactile information from the body including touch, temperature, pain, and proprioception. Creates a sensory map of the entire body surface.",
+    functions: ["Touch processing", "Temperature sensing", "Pain perception", "Body awareness"],
+    position: { x: 0, y: 1.2, z: -0.2 },
+    color: "hsl(160, 60%, 50%)",
+    category: "Parietal Lobe",
+    imagePath: "/brain-regions/brain-sensory.png",
+  },
+  {
+    id: "visual",
+    name: "Visual Cortex",
+    description: "Located in the occipital lobe, processes all visual information including color, shape, motion, and depth perception. Contains multiple specialized areas for different aspects of vision.",
+    functions: ["Color processing", "Shape recognition", "Motion detection", "Depth perception"],
+    position: { x: 0, y: 0.5, z: -1.3 },
+    color: "hsl(280, 60%, 60%)",
+    category: "Occipital Lobe",
+    imagePath: "/brain-regions/brain-visual.png",
+  },
+  {
+    id: "auditory",
+    name: "Auditory Cortex",
+    description: "Processes auditory information including sound identification, pitch discrimination, and sound localization. Essential for understanding speech and appreciating music.",
+    functions: ["Sound processing", "Speech recognition", "Music perception", "Sound localization"],
+    position: { x: 1.2, y: 0.3, z: -0.3 },
+    color: "hsl(320, 60%, 55%)",
+    category: "Temporal Lobe",
+    imagePath: "/brain-regions/brain-auditory.png",
+  },
+  {
+    id: "broca",
+    name: "Broca's Area",
+    description: "Critical for speech production and language processing. Damage to this area results in difficulty producing speech while comprehension remains relatively intact.",
+    functions: ["Speech production", "Language processing", "Grammar", "Verbal fluency"],
+    position: { x: -1.0, y: 0.5, z: 0.8 },
+    color: "hsl(40, 70%, 55%)",
+    category: "Frontal Lobe",
+    imagePath: "/brain-regions/brain-broca.png",
+  },
+  {
+    id: "wernicke",
+    name: "Wernicke's Area",
+    description: "Essential for language comprehension. Enables understanding of both spoken and written language. Damage leads to fluent but meaningless speech.",
+    functions: ["Language comprehension", "Reading", "Semantic processing", "Word recognition"],
+    position: { x: -1.1, y: 0.3, z: -0.5 },
+    color: "hsl(50, 65%, 55%)",
+    category: "Temporal Lobe",
+    imagePath: "/brain-regions/brain-wernicke.png",
+  },
+  {
+    id: "hippocampus",
+    name: "Hippocampus",
+    description: "Seahorse-shaped structure crucial for converting short-term memories into long-term memories. Also vital for spatial navigation and creating cognitive maps of environments.",
+    functions: ["Memory formation", "Spatial navigation", "Learning", "Memory consolidation"],
+    position: { x: 0.6, y: -0.2, z: -0.3 },
+    color: "hsl(140, 65%, 50%)",
+    category: "Limbic System",
+    imagePath: "/brain-regions/brain-hippocampus.png",
+  },
+  {
+    id: "amygdala",
+    name: "Amygdala",
+    description: "Almond-shaped structure that processes emotions, particularly fear and anxiety. Plays a key role in emotional memories and the fight-or-flight response.",
+    functions: ["Emotion processing", "Fear response", "Emotional memory", "Threat detection"],
+    position: { x: 0.8, y: -0.3, z: 0.2 },
+    color: "hsl(0, 70%, 55%)",
+    category: "Limbic System",
+    imagePath: "/brain-regions/brain-amygdala.png",
+  },
+  {
+    id: "cerebellum",
+    name: "Cerebellum",
+    description: "The 'little brain' at the back of the skull. Coordinates voluntary movements, balance, and motor learning. Contains more neurons than the rest of the brain combined.",
+    functions: ["Motor coordination", "Balance", "Motor learning", "Timing"],
+    position: { x: 0, y: -0.8, z: -1.0 },
+    color: "hsl(220, 65%, 55%)",
+    category: "Hindbrain",
+    imagePath: "/brain-regions/brain-cerebellum.png",
+  },
+  {
+    id: "thalamus",
+    name: "Thalamus",
+    description: "The brain's relay station, routing sensory and motor signals to the cerebral cortex. Plays a crucial role in consciousness, sleep, and alertness regulation.",
+    functions: ["Sensory relay", "Consciousness", "Sleep regulation", "Attention"],
+    position: { x: 0, y: 0.2, z: 0 },
+    color: "hsl(190, 55%, 50%)",
+    category: "Diencephalon",
+    imagePath: "/brain-regions/brain-thalamus.png",
+  },
+  {
+    id: "hypothalamus",
+    name: "Hypothalamus",
+    description: "Small but mighty region that regulates many vital body functions including hunger, thirst, body temperature, and circadian rhythms. Controls the endocrine system.",
+    functions: ["Hunger regulation", "Temperature control", "Hormone regulation", "Sleep cycles"],
+    position: { x: 0, y: -0.1, z: 0.3 },
+    color: "hsl(30, 65%, 50%)",
+    category: "Diencephalon",
+    imagePath: "/brain-regions/brain-hypothalamus.png",
+  },
+  {
+    id: "brainstem",
+    name: "Brain Stem",
+    description: "Controls vital life functions including breathing, heart rate, and blood pressure. Serves as the connection between the brain and spinal cord.",
+    functions: ["Breathing control", "Heart rate", "Blood pressure", "Consciousness"],
+    position: { x: 0, y: -0.8, z: -0.2 },
+    color: "hsl(10, 60%, 50%)",
+    category: "Hindbrain",
+    imagePath: "/brain-regions/brain-stem.png",
+  },
+  {
+    id: "parietal",
+    name: "Parietal Lobe",
+    description: "Processes spatial information, integrates sensory input, and is crucial for navigation, mathematical reasoning, and spatial awareness.",
+    functions: ["Spatial processing", "Navigation", "Math reasoning", "Sensory integration"],
+    position: { x: 0, y: 1.0, z: -0.6 },
+    color: "hsl(260, 55%, 55%)",
+    category: "Parietal Lobe",
+    imagePath: "/brain-regions/brain-parietal.png",
+  },
+  {
+    id: "temporal",
+    name: "Temporal Lobe",
+    description: "Essential for processing auditory information, memory formation, language comprehension, face recognition, and emotional processing.",
+    functions: ["Auditory processing", "Memory", "Face recognition", "Language"],
+    position: { x: 1.2, y: 0, z: 0 },
+    color: "hsl(340, 55%, 55%)",
+    category: "Temporal Lobe",
+    imagePath: "/brain-regions/brain-temporal.png",
+  },
+];
+
+export const getRegionById = (id: string): BrainRegion | undefined => {
+  return brainRegions.find(r => r.id === id);
+};
