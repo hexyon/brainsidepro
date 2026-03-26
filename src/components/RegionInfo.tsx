@@ -3,10 +3,9 @@ import { getRegionById } from "@/data/brainRegions";
 interface RegionInfoProps {
   regionId: string | null;
   activityContext?: string;
-  onClose: () => void;
 }
 
-const RegionInfo = ({ regionId, activityContext, onClose }: RegionInfoProps) => {
+const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
   const region = regionId ? getRegionById(regionId) : null;
 
   if (!region) return null;
@@ -14,25 +13,19 @@ const RegionInfo = ({ regionId, activityContext, onClose }: RegionInfoProps) => 
   return (
     <div className="apple-card animate-fade-in-up">
       <div className="max-w-6xl mx-auto space-y-6 p-4">
-
         {/* Header */}
         <div>
-          <div className="bg-white dark:bg-black border-2 border-border rounded-2xl p-6 flex items-center justify-between">
-            <h2 className="text-[32px] font-bold text-black dark:text-white leading-tight" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+          <div className="bg-white dark:bg-black border-2 border-border rounded-2xl p-6 flex items-center justify-center">
+            <h2
+              className="text-[32px] font-bold text-black dark:text-white leading-tight text-center"
+              style={{ fontFamily: "Times New Roman, Times, serif" }}
+            >
               {region.name}
             </h2>
-            <button
-              onClick={onClose}
-              className="text-muted-foreground hover:text-foreground transition-colors text-2xl leading-none"
-              aria-label="Close"
-            >
-              ×
-            </button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
           {/* Image Card */}
           <div className="relative">
             <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex items-center justify-center">
@@ -41,7 +34,9 @@ const RegionInfo = ({ regionId, activityContext, onClose }: RegionInfoProps) => 
                   src={region.imagePath}
                   alt={region.name}
                   className="w-full h-full object-contain"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
                 />
               </div>
             </div>
@@ -91,11 +86,11 @@ const RegionInfo = ({ regionId, activityContext, onClose }: RegionInfoProps) => 
               <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
               <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
               <p className="text-[23px] text-gray-800 leading-relaxed">
-                {activityContext || `Search for an activity to see how ${region.name} contributes to it.`}
+                {activityContext ||
+                  `Search for an activity to see how ${region.name} contributes to it.`}
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </div>

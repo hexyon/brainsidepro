@@ -88,7 +88,6 @@ const Index = () => {
             <RegionInfo
               regionId={selectedRegionId}
               activityContext={result?.description}
-              onClose={() => setSelectedRegionId(null)}
             />
           )}
 
