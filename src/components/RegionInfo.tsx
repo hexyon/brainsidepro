@@ -6,7 +6,7 @@ interface RegionInfoProps {
   onClose: () => void;
 }
 
-const RegionInfo = ({ regionId, onClose }: RegionInfoProps) => {
+const RegionInfo = ({ regionId, activityContext, onClose }: RegionInfoProps) => {
   const region = regionId ? getRegionById(regionId) : null;
 
   if (!region) return null;
@@ -79,6 +79,20 @@ const RegionInfo = ({ regionId, onClose }: RegionInfoProps) => {
                   </span>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* Activity Context Card */}
+          <div className="relative">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[26px] font-bold text-gray-800">Activity Context</span>
+              </div>
+              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
+              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
+              <p className="text-[23px] text-gray-800 leading-relaxed">
+                {activityContext || `Search for an activity to see how ${region.name} contributes to it.`}
+              </p>
             </div>
           </div>
 
