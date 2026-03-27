@@ -28,7 +28,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Image Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex items-center justify-center">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex items-center justify-center">
               <div className="rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 p-4 w-full h-full flex items-center justify-center">
                 <img
                   src={region.imagePath}
@@ -44,7 +44,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Definition Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex flex-col">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[26px] font-bold text-gray-800">Definition</span>
               </div>
@@ -58,7 +58,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Key Functions Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex flex-col">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[26px] font-bold text-gray-800">Key Functions</span>
               </div>
@@ -79,7 +79,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Activity Context Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow aspect-square flex flex-col">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[26px] font-bold text-gray-800">Activity Context</span>
               </div>
