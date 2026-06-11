@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Brain, Loader2, Moon, Sparkles, Sun } from "lucide-react";
+import { Loader2, Moon, Sun } from "lucide-react";
 import SearchBar from "@/components/SearchBar";
 import BrainScene from "@/components/BrainScene";
 import ActiveRegionsList from "@/components/ActiveRegionsList";
@@ -60,64 +60,68 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col gap-6 px-4 py-5 sm:px-6 lg:px-8">
-        <header className="flex flex-col gap-4 rounded-[28px] border border-border/70 bg-card/70 px-5 py-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:px-7">
-          <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-              <Brain className="h-7 w-7" />
+      <div className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col gap-6 px-4 py-5 sm:px-6 lg:px-8">
+        <header className="flex flex-col gap-5 border-2 border-border bg-card px-5 py-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <div className="flex items-center gap-5">
+            <div className="flex h-20 w-20 items-center justify-center border-2 border-border bg-background p-2 shadow-sm">
+              <img src="/favicon.ico" alt="Brain Side icon" className="h-full w-full object-contain" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">Brain Side Pro</p>
-              <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">Understand what your brain is doing</h1>
+              <p className="text-base font-bold uppercase tracking-[0.16em] text-muted-foreground">Brain Side</p>
+              <h1 className="mt-2 text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Understand what your brain is doing</h1>
             </div>
           </div>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border bg-background px-4 text-sm font-medium text-foreground transition hover:bg-secondary"
+            className="inline-flex h-12 items-center justify-center gap-2 border-2 border-border bg-background px-5 text-base font-bold text-foreground transition hover:bg-secondary"
             aria-label="Toggle dark mode"
           >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             {isDark ? "Light" : "Dark"}
           </button>
         </header>
 
-        <section className="grid flex-1 gap-6 lg:grid-cols-[340px_minmax(0,1fr)_380px]">
-          <aside className="space-y-4 rounded-[28px] border border-border/70 bg-card p-5 shadow-sm lg:sticky lg:top-5 lg:h-[calc(100vh-2.5rem)] lg:overflow-auto">
-            <div>
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                <Sparkles className="h-3.5 w-3.5" />
-                Start here
-              </div>
-              <p className="text-[15px] leading-6 text-muted-foreground">
-                Type an activity and the app maps likely brain systems into a simple, explorable view.
+        <section className="grid flex-1 gap-6 lg:grid-cols-[380px_minmax(0,1fr)_420px]">
+          <aside className="space-y-5 border-2 border-border bg-card p-5 shadow-sm lg:sticky lg:top-5 lg:h-[calc(100vh-2.5rem)] lg:overflow-auto">
+            <div className="border-2 border-border bg-background p-5">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">Search an activity</h2>
+              <p className="mt-3 text-lg leading-7 text-muted-foreground">
+                Type what someone is doing or feeling. The app will map the likely brain systems and explain them in plain English.
               </p>
             </div>
-            <SearchBar onSearch={handleSearch} isLoading={isAnalyzing} />
-            <div className="rounded-2xl border border-border bg-background/70 p-4">
-              <p className="text-sm font-semibold">How it works</p>
-              <ol className="mt-3 space-y-3 text-sm text-muted-foreground">
-                <li className="flex gap-3"><span className="step-dot">1</span><span>Describe what someone is doing or feeling.</span></li>
-                <li className="flex gap-3"><span className="step-dot">2</span><span>AI identifies likely brain regions involved.</span></li>
-                <li className="flex gap-3"><span className="step-dot">3</span><span>Explore each region with plain-English context.</span></li>
+
+            <div className="border-2 border-border bg-background p-5">
+              <SearchBar onSearch={handleSearch} isLoading={isAnalyzing} />
+            </div>
+
+            <div className="border-2 border-border bg-background p-5">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">How it works</h2>
+              <ol className="mt-4 space-y-4 text-lg leading-7 text-muted-foreground">
+                <li className="flex gap-4"><span className="flex h-8 w-8 flex-shrink-0 items-center justify-center border-2 border-border bg-secondary text-base font-bold text-foreground">1</span><span>Describe an activity or feeling.</span></li>
+                <li className="flex gap-4"><span className="flex h-8 w-8 flex-shrink-0 items-center justify-center border-2 border-border bg-secondary text-base font-bold text-foreground">2</span><span>AI identifies likely active brain regions.</span></li>
+                <li className="flex gap-4"><span className="flex h-8 w-8 flex-shrink-0 items-center justify-center border-2 border-border bg-secondary text-base font-bold text-foreground">3</span><span>Select any region to understand its role.</span></li>
               </ol>
             </div>
-            <p className="rounded-2xl bg-secondary/70 p-4 text-xs leading-5 text-muted-foreground">
+
+            <p className="border-2 border-border bg-secondary p-5 text-base font-medium leading-7 text-muted-foreground">
               Educational visualization only. It is not medical advice or a diagnosis.
             </p>
           </aside>
 
-          <section className="flex min-h-[640px] flex-col gap-4 rounded-[32px] border border-border/70 bg-card p-4 shadow-sm sm:p-6">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <section className="flex min-h-[680px] flex-col gap-5 border-2 border-border bg-card p-5 shadow-sm sm:p-6">
+            <div className="grid gap-4 border-2 border-border bg-background p-5 xl:grid-cols-[1fr_360px]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Visualization</p>
-                <h2 className="mt-1 text-3xl font-semibold tracking-[-0.05em]">{activeRegionIds.length ? `${activeRegionIds.length} active regions` : "Ready to analyze"}</h2>
+                <p className="text-base font-bold uppercase tracking-[0.16em] text-muted-foreground">Visualization</p>
+                <h2 className="mt-2 text-4xl font-bold tracking-[-0.05em]">
+                  {activeRegionIds.length ? `${activeRegionIds.length} active regions` : "Ready to analyze"}
+                </h2>
               </div>
-              <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-muted-foreground sm:max-w-[320px]">
+              <div className="border-2 border-border bg-secondary p-4 text-lg leading-7 text-muted-foreground">
                 {activeRegionIds.length ? `Likely systems: ${systemSummary}.` : "Try an example like “playing piano” or “feeling anxious before a test.”"}
               </div>
             </div>
 
-            <div className="min-h-[460px] flex-1 overflow-hidden rounded-[28px] border border-border bg-background">
+            <div className="min-h-[500px] flex-1 overflow-hidden border-2 border-border bg-background">
               <BrainScene
                 activeRegionIds={activeRegionIds}
                 primaryRegionId={selectedRegionId ?? primaryRegionId}
@@ -126,56 +130,45 @@ const Index = () => {
             </div>
 
             {isAnalyzing && (
-              <div className="grid gap-3 rounded-[24px] border border-border bg-background p-4 text-sm text-muted-foreground sm:grid-cols-3">
-                <div className="flex items-center gap-2"><Loader2 className="h-4 w-4 animate-spin text-primary" /> Reading activity</div>
-                <div className="flex items-center gap-2"><Loader2 className="h-4 w-4 animate-spin text-primary" /> Mapping systems</div>
-                <div className="flex items-center gap-2"><Loader2 className="h-4 w-4 animate-spin text-primary" /> Preparing explanation</div>
-              </div>
-            )}
-
-            {!isAnalyzing && activeRegions.length > 0 && (
-              <div className="grid gap-3 sm:grid-cols-3">
-                {activeRegions.slice(0, 3).map((region) => region && (
-                  <button
-                    key={region.id}
-                    onClick={() => setSelectedRegionId(region.id)}
-                    className="rounded-2xl border border-border bg-background p-4 text-left transition hover:-translate-y-0.5 hover:shadow-sm"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{roleByRegionId[region.id] ?? region.category}</p>
-                    <p className="mt-2 text-lg font-semibold tracking-[-0.03em]">{region.name}</p>
-                  </button>
-                ))}
+              <div className="grid gap-3 border-2 border-border bg-background p-5 text-lg text-muted-foreground sm:grid-cols-3">
+                <div className="flex items-center gap-3"><Loader2 className="h-5 w-5 animate-spin text-primary" /> Reading activity</div>
+                <div className="flex items-center gap-3"><Loader2 className="h-5 w-5 animate-spin text-primary" /> Mapping systems</div>
+                <div className="flex items-center gap-3"><Loader2 className="h-5 w-5 animate-spin text-primary" /> Preparing explanation</div>
               </div>
             )}
           </section>
 
-          <aside className="space-y-4 rounded-[28px] border border-border/70 bg-card p-5 shadow-sm lg:sticky lg:top-5 lg:h-[calc(100vh-2.5rem)] lg:overflow-auto">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Analysis</p>
-              <h2 className="mt-1 text-2xl font-semibold tracking-[-0.04em]">{activeRegionIds.length ? "What lit up" : "Your results will appear here"}</h2>
+          <aside className="space-y-5 lg:sticky lg:top-5 lg:h-[calc(100vh-2.5rem)] lg:overflow-auto">
+            <div className="border-2 border-border bg-card p-5 shadow-sm">
+              <p className="text-base font-bold uppercase tracking-[0.16em] text-muted-foreground">Analysis</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-[-0.04em]">
+                {activeRegionIds.length ? "What lit up" : "Results appear here"}
+              </h2>
             </div>
 
             {activeRegionIds.length > 0 ? (
               <>
-                <div className="rounded-2xl bg-secondary/70 p-4">
-                  <p className="text-sm font-semibold">At a glance</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                <div className="border-2 border-border bg-card p-5 shadow-sm">
+                  <h3 className="text-2xl font-bold tracking-[-0.03em]">At a glance</h3>
+                  <p className="mt-3 text-lg leading-7 text-muted-foreground">
                     This activity likely involves {systemSummary.toLowerCase()} across {activeRegionIds.length} brain regions.
                   </p>
                 </div>
+
                 <ActiveRegionsList
                   activeRegionIds={activeRegionIds}
                   selectedRegionId={selectedRegionId}
                   onSelectRegion={setSelectedRegionId}
                 />
+
                 <RegionInfo
                   regionId={selectedRegionId}
                   activityContext={result?.description}
                 />
               </>
             ) : (
-              <div className="rounded-2xl border border-dashed border-border bg-background p-5 text-sm leading-6 text-muted-foreground">
-                Search for an activity to see the AI summary, active region list, and a focused explanation for each region.
+              <div className="border-2 border-dashed border-border bg-card p-5 text-lg leading-7 text-muted-foreground shadow-sm">
+                Search for an activity to see the AI summary, active region buttons, and a focused explanation for each selected region.
               </div>
             )}
           </aside>
