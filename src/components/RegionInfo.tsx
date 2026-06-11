@@ -11,52 +11,88 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
   if (!region) return null;
 
   return (
-    <div className="space-y-5">
-      <section className="border-2 border-border bg-background p-5">
-        <div className="flex items-start gap-5">
-          <div className="flex h-28 w-28 flex-shrink-0 items-center justify-center border-2 border-border bg-secondary p-2">
-            <img
-              src={region.imagePath}
-              alt={region.name}
-              className="h-full w-full object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          </div>
-          <div className="min-w-0">
-            <p className="text-base font-bold uppercase tracking-[0.16em] text-muted-foreground">Selected region</p>
-            <h3 className="mt-2 text-3xl font-bold tracking-[-0.04em]">{region.name}</h3>
-            <p className="mt-2 text-lg font-semibold text-muted-foreground">{region.category}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-2 border-border bg-background p-5">
-        <h4 className="border-b-2 border-border pb-3 text-2xl font-bold tracking-[-0.03em]">What it does</h4>
-        <p className="mt-4 text-lg leading-8 text-muted-foreground">{region.description}</p>
-      </section>
-
-      <section className="border-2 border-border bg-background p-5">
-        <h4 className="border-b-2 border-border pb-3 text-2xl font-bold tracking-[-0.03em]">Key functions</h4>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {region.functions.slice(0, 8).map((func) => (
-            <span
-              key={func}
-              className="border-2 border-border bg-secondary px-3 py-2 text-base font-bold text-foreground"
+    <div className="apple-card animate-fade-in-up">
+      <div className="max-w-6xl mx-auto space-y-6 p-4">
+        {/* Header */}
+        <div>
+          <div className="bg-white dark:bg-black border-2 border-border rounded-2xl p-6 flex items-center justify-center">
+            <h2
+              className="text-[32px] font-bold text-black dark:text-white leading-tight text-center"
+              style={{ fontFamily: "Times New Roman, Times, serif" }}
             >
-              {func}
-            </span>
-          ))}
+              {region.name}
+            </h2>
+          </div>
         </div>
-      </section>
 
-      <section className="border-2 border-border bg-background p-5">
-        <h4 className="border-b-2 border-border pb-3 text-2xl font-bold tracking-[-0.03em]">Why it matters here</h4>
-        <p className="mt-4 text-lg leading-8 text-muted-foreground">
-          {activityContext || `Search for an activity to see how ${region.name} contributes to it.`}
-        </p>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Image Card */}
+          <div className="relative">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex items-center justify-center">
+              <div className="rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 p-4 w-full h-full flex items-center justify-center">
+                <img
+                  src={region.imagePath}
+                  alt={region.name}
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Definition Card */}
+          <div className="relative">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[26px] font-bold text-gray-800">Definition</span>
+              </div>
+              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
+              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
+              <p className="text-[23px] text-gray-800 leading-relaxed">
+                {region.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Key Functions Card */}
+          <div className="relative">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[26px] font-bold text-gray-800">Key Functions</span>
+              </div>
+              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
+              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
+              <div className="flex flex-wrap gap-3 flex-1 content-start">
+                {region.functions.slice(0, 8).map((func) => (
+                  <span
+                    key={func}
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-white/60 dark:bg-black/30 border border-gray-300 dark:border-gray-600 text-gray-800 font-medium text-[23px] shadow-sm"
+                  >
+                    {func}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Activity Context Card */}
+          <div className="relative">
+            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[26px] font-bold text-gray-800">Activity Context</span>
+              </div>
+              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
+              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
+              <p className="text-[23px] text-gray-800 leading-relaxed">
+                {activityContext ||
+                  `Search for an activity to see how ${region.name} contributes to it.`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

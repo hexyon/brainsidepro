@@ -6,57 +6,37 @@ interface ActiveRegionsListProps {
   onSelectRegion: (id: string) => void;
 }
 
-const roleByRegionId: Record<string, string> = {
-  prefrontal: "Thinking",
-  motor: "Movement",
-  sensory: "Senses",
-  visual: "Senses",
-  auditory: "Senses",
-  broca: "Language",
-  wernicke: "Language",
-  hippocampus: "Memory",
-  amygdala: "Emotion",
-  cerebellum: "Movement",
-  thalamus: "Coordination",
-  hypothalamus: "Body regulation",
-  brainstem: "Body regulation",
-  parietal: "Spatial awareness",
-  temporal: "Memory",
-};
-
 const ActiveRegionsList = ({ activeRegionIds, selectedRegionId, onSelectRegion }: ActiveRegionsListProps) => {
   const activeRegions = activeRegionIds
-    .map((id) => brainRegions.find((region) => region.id === id))
+    .map(id => brainRegions.find(r => r.id === id))
     .filter(Boolean) as BrainRegion[];
 
   if (activeRegions.length === 0) return null;
 
   return (
-    <div className="border-2 border-border bg-background p-5">
-      <div className="mb-4 flex items-center justify-between border-b-2 border-border pb-3">
-        <h3 className="text-2xl font-bold tracking-[-0.03em]">Active regions</h3>
-        <p className="text-lg font-bold text-muted-foreground">{activeRegions.length}</p>
+    <div className="apple-card p-6 animate-fade-in-up">
+      <div className="flex items-baseline justify-between mb-6 pb-4 border-b border-border">
+        <p className="text-[13px] uppercase tracking-[0.12em] font-medium text-muted-foreground">
+          Active Regions
+        </p>
+        <p className="text-[13px] uppercase tracking-[0.12em] font-medium text-muted-foreground">
+          {activeRegions.length} found
+        </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {activeRegions.map((region) => {
-          const isSelected = selectedRegionId === region.id;
-
-          return (
-            <button
-              key={region.id}
-              onClick={() => onSelectRegion(region.id)}
-              className={`border-2 px-3 py-2 text-left text-base font-bold transition ${
-                isSelected
-                  ? "border-foreground bg-primary text-primary-foreground"
-                  : "border-border bg-secondary text-foreground hover:border-foreground"
-              }`}
-            >
-              <span>{region.name}</span>
-              <span className="ml-2 text-sm font-semibold opacity-70">{roleByRegionId[region.id] ?? region.category}</span>
-            </button>
-          );
-        })}
+      <div className="divide-y divide-border">
+        {activeRegions.map((region) => (
+          <button
+            key={region.id}
+            onClick={() => onSelectRegion(region.id)}
+            className="w-full flex items-center py-5 group text-left transition-all duration-200 active:scale-[0.99] relative"
+          >
+            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 bg-primary rounded-full transition-all duration-200 group-hover:h-[60%]" />
+            <span className="text-[22px] font-semibold tracking-tight flex-1 leading-none pl-4 group-hover:pl-5 transition-all duration-200">
+              {region.name}
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
