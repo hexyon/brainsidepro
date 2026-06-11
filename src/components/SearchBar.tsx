@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Search } from "lucide-react";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -6,13 +7,11 @@ interface SearchBarProps {
 }
 
 const suggestions = [
-  "Running a marathon",
-  "Solving a math problem",
   "Playing the piano",
-  "Reading a book",
-  "Coding a website",
+  "Solving a math problem",
+  "Feeling anxious before a test",
   "Dancing salsa",
-  "Feeling anxious",
+  "Reading a book",
   "Riding a bicycle",
 ];
 
@@ -21,9 +20,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim() && !isLoading) {
-      onSearch(query.trim());
-    }
+    if (query.trim() && !isLoading) onSearch(query.trim());
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -33,44 +30,46 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
   return (
     <div className="w-full space-y-4">
-      <form onSubmit={handleSubmit} className="relative">
-        <div className="editorial-search-container">
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <label htmlFor="activity-search" className="text-sm font-semibold">
+          Describe an activity
+        </label>
+        <div className="flex items-center gap-2 rounded-2xl border border-border bg-background px-4 py-3 transition focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/20">
+          <Search className="h-5 w-5 flex-shrink-0 text-muted-foreground" />
           <input
+            id="activity-search"
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Describe an activity..."
-            className="editorial-search-input"
-            aria-label="Search"
+            placeholder="e.g. giving a speech"
+            className="min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
+            aria-label="Describe an activity"
             disabled={isLoading}
           />
-          {query && (
-            <button
-              type="submit"
-              className="flex-shrink-0 p-2 rounded-lg transition-transform active:scale-95"
-              disabled={isLoading}
-            >
-              <img
-                src="/search.png"
-                alt="Search"
-                className="w-5 h-5 object-contain dark:invert"
-              />
-            </button>
-          )}
+          <button
+            type="submit"
+            className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"
+            disabled={isLoading || !query.trim()}
+          >
+            Analyze
+          </button>
         </div>
       </form>
 
-      <div className="flex flex-wrap gap-2">
-        {suggestions.map((suggestion) => (
-          <button
-            key={suggestion}
-            onClick={() => handleSuggestionClick(suggestion)}
-            className="apple-badge hover:bg-primary/10 hover:text-primary transition-all duration-200"
-            disabled={isLoading}
-          >
-            {suggestion}
-          </button>
-        ))}
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Examples</p>
+        <div className="flex flex-wrap gap-2">
+          {suggestions.map((suggestion) => (
+            <button
+              key={suggestion}
+              onClick={() => handleSuggestionClick(suggestion)}
+              className="rounded-full border border-border bg-background px-3 py-1.5 text-sm text-muted-foreground transition hover:border-primary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={isLoading}
+            >
+              {suggestion}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
