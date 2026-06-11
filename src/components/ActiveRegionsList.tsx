@@ -32,13 +32,13 @@ const ActiveRegionsList = ({ activeRegionIds, selectedRegionId, onSelectRegion }
   if (activeRegions.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-border bg-background p-3">
-      <div className="mb-2 flex items-center justify-between px-1">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Active regions</p>
-        <p className="text-xs font-medium text-muted-foreground">{activeRegions.length}</p>
+    <div className="border-2 border-border bg-background p-5">
+      <div className="mb-4 flex items-center justify-between border-b-2 border-border pb-3">
+        <h3 className="text-2xl font-bold tracking-[-0.03em]">Active regions</h3>
+        <p className="text-lg font-bold text-muted-foreground">{activeRegions.length}</p>
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-wrap gap-2">
         {activeRegions.map((region) => {
           const isSelected = selectedRegionId === region.id;
 
@@ -46,17 +46,14 @@ const ActiveRegionsList = ({ activeRegionIds, selectedRegionId, onSelectRegion }
             <button
               key={region.id}
               onClick={() => onSelectRegion(region.id)}
-              className={`w-full rounded-xl border p-3 text-left transition ${
+              className={`border-2 px-3 py-2 text-left text-base font-bold transition ${
                 isSelected
-                  ? "border-primary bg-primary/20 text-foreground"
-                  : "border-transparent bg-secondary/60 text-muted-foreground hover:border-border hover:bg-secondary hover:text-foreground"
+                  ? "border-foreground bg-primary text-primary-foreground"
+                  : "border-border bg-secondary text-foreground hover:border-foreground"
               }`}
             >
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-sm font-semibold tracking-[-0.02em]">{region.name}</span>
-                <span className="h-2.5 w-2.5 flex-shrink-0 rounded-full" style={{ backgroundColor: region.color }} />
-              </div>
-              <p className="mt-1 text-xs">{roleByRegionId[region.id] ?? region.category}</p>
+              <span>{region.name}</span>
+              <span className="ml-2 text-sm font-semibold opacity-70">{roleByRegionId[region.id] ?? region.category}</span>
             </button>
           );
         })}
