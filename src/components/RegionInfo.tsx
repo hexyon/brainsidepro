@@ -7,6 +7,11 @@ interface RegionInfoProps {
 
 const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
   const region = regionId ? getRegionById(regionId) : null;
+  const panelEdge =
+    "border border-zinc-300 dark:border-zinc-700 ring-1 ring-zinc-950/5 dark:ring-white/10 shadow-sm";
+  const textPanel =
+    `bg-white dark:bg-zinc-950 rounded-2xl p-8 ${panelEdge} aspect-square flex flex-col`;
+  const divider = "-mx-8 mb-6 border-b border-zinc-200 dark:border-zinc-800";
 
   if (!region) return null;
 
@@ -28,7 +33,9 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Image Card */}
           <div className="relative">
-            <div className="bg-black rounded-2xl shadow-xl aspect-square overflow-hidden flex items-center justify-center">
+            <div
+              className={`bg-black rounded-2xl ${panelEdge} aspect-square overflow-hidden flex items-center justify-center`}
+            >
               <div className="w-full h-full flex items-center justify-center">
                 <img
                   src={region.imagePath}
@@ -44,13 +51,14 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Definition Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+            <div className={textPanel}>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-[26px] font-bold text-gray-800">Definition</span>
+                <span className="text-[26px] font-bold text-zinc-900 dark:text-zinc-100">
+                  Definition
+                </span>
               </div>
-              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
-              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
-              <p className="text-[23px] text-gray-800 leading-relaxed">
+              <div className={divider} />
+              <p className="text-[23px] text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 {region.description}
               </p>
             </div>
@@ -58,17 +66,18 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Key Functions Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+            <div className={textPanel}>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-[26px] font-bold text-gray-800">Key Functions</span>
+                <span className="text-[26px] font-bold text-zinc-900 dark:text-zinc-100">
+                  Key Functions
+                </span>
               </div>
-              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
-              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
+              <div className={divider} />
               <div className="flex flex-wrap gap-3 flex-1 content-start">
                 {region.functions.slice(0, 8).map((func) => (
                   <span
                     key={func}
-                    className="inline-flex items-center px-4 py-2 rounded-xl bg-white/60 dark:bg-black/30 border border-gray-300 dark:border-gray-600 text-gray-800 font-medium text-[23px] shadow-sm"
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium text-[23px]"
                   >
                     {func}
                   </span>
@@ -79,13 +88,14 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
 
           {/* Activity Context Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex flex-col">
+            <div className={textPanel}>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-[26px] font-bold text-gray-800">Activity Context</span>
+                <span className="text-[26px] font-bold text-zinc-900 dark:text-zinc-100">
+                  Activity Context
+                </span>
               </div>
-              <div className="-mx-8 mb-6 border-b border-border dark:hidden" />
-              <div className="-mx-8 mb-6 bg-red-500 py-1 hidden dark:block" />
-              <p className="text-[23px] text-gray-800 leading-relaxed">
+              <div className={divider} />
+              <p className="text-[23px] text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 {activityContext ||
                   `Search for an activity to see how ${region.name} contributes to it.`}
               </p>
