@@ -28,8 +28,8 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Image Card */}
           <div className="relative">
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-xl aspect-square flex items-center justify-center">
-              <div className="rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 p-4 w-full h-full flex items-center justify-center">
+            <div className="bg-black rounded-2xl shadow-xl aspect-square overflow-hidden flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-center">
                 <img
                   src={region.imagePath}
                   alt={region.name}
