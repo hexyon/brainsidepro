@@ -11,7 +11,8 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
     "border border-zinc-300 dark:border-zinc-700 ring-1 ring-zinc-950/5 dark:ring-white/10 shadow-sm";
   const textPanel =
     `bg-white dark:bg-zinc-950 p-8 ${panelEdge} aspect-square flex flex-col`;
-  const divider = "-mx-8 mb-6 border-b border-zinc-200 dark:border-zinc-800";
+  const divider = "-mx-8 mb-6 border-b border-zinc-200 dark:hidden";
+  const darkDivider = "-mx-8 mb-6 bg-red-500 py-1 hidden dark:block";
 
   if (!region) return null;
 
@@ -58,6 +59,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
                 </span>
               </div>
               <div className={divider} />
+              <div className={darkDivider} />
               <p className="text-[23px] text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 {region.description}
               </p>
@@ -73,6 +75,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
                 </span>
               </div>
               <div className={divider} />
+              <div className={darkDivider} />
               <div className="flex flex-wrap gap-3 flex-1 content-start">
                 {region.functions.slice(0, 8).map((func) => (
                   <span
@@ -95,6 +98,7 @@ const RegionInfo = ({ regionId, activityContext }: RegionInfoProps) => {
                 </span>
               </div>
               <div className={divider} />
+              <div className={darkDivider} />
               <p className="text-[23px] text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 {activityContext ||
                   `Search for an activity to see how ${region.name} contributes to it.`}
