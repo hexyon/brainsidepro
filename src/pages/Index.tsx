@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import SearchBar from "@/components/SearchBar";
-import BrainScene from "@/components/BrainScene";
 import ActiveRegionsList from "@/components/ActiveRegionsList";
 import RegionInfo from "@/components/RegionInfo";
 import { useAIBrainAnalysis } from "@/hooks/useAIBrainAnalysis";
@@ -57,19 +56,6 @@ const Index = () => {
       <section className="px-6 pb-8">
         <div className="max-w-3xl mx-auto">
           <SearchBar onSearch={handleSearch} isLoading={isAnalyzing} />
-        </div>
-      </section>
-
-      {/* Brain Visualization */}
-      <section className="px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="apple-card overflow-hidden" style={{ height: '450px' }}>
-            <BrainScene
-              activeRegionIds={activeRegionIds}
-              primaryRegionId={primaryRegionId}
-              onSelectRegion={setSelectedRegionId}
-            />
-          </div>
         </div>
       </section>
 
