@@ -1,4 +1,5 @@
 import { brainRegions } from "@/data/brainRegions";
+import { Brain } from "lucide-react";
 
 interface BrainSceneProps {
   activeRegionIds: string[];
@@ -32,7 +33,11 @@ const BrainScene = ({ activeRegionIds, primaryRegionId, onSelectRegion }: BrainS
         </div>
       ) : (
         <div className="text-center">
-          <div className="text-8xl mb-6">🧠</div>
+          <Brain
+            aria-hidden="true"
+            className="mx-auto mb-6 h-20 w-20 fill-[#f25bb8] stroke-[#d946a5]"
+            strokeWidth={1.5}
+          />
           <p className="text-[19px] text-muted-foreground font-medium">
             Search for an activity to see brain regions
           </p>
